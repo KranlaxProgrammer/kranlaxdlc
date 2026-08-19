@@ -1,0 +1,21 @@
+{
+  "id": "kranlaxs",
+  "name": "Kranlax's DLC",
+  "author": [
+    "Kranlax Karasu",
+    "Cyanuro Cyao",
+    "Josepo",
+    "OnlyAPlayerMoreYT"
+  ],
+  "description": "WARNINGS:\n1. Changing the language requires a game restart.\n2. Jokers unlocked via challenges require a restart to appear.\n3. Suggestive textures shrink stickers. Burn effects at low speeds may trigger trypophobia.\n4. Send bug reports (with crash logs) and feedback to: furrogenerico777@gmail.com",
+  "prefix": "kranlaxs",
+  "main_file": "main.lua",
+  "version": "1.0",
+  "priority": 0,
+  "badge_colour": "666665",
+  "badge_text_colour": "FFFFFF",
+  "dependencies": [
+    "Steamodded (>=1.0.0~BETA-0827c)",
+    "Talisman"
+  ]
+}
