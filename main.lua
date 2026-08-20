@@ -157,12 +157,27 @@ G.FUNCS.shop_setup=function(e)
     original_shop_setup(e)
 end
 
-my_mod.config_tab=function()
-    return{n=G.UIT.ROOT,config={align="cm",padding=0.05,colour=G.C.CLEAR},nodes={
-        {n=G.UIT.R,config={align="cm",padding=0.1},nodes={create_toggle({label="Unlock Weekly Challenge deck freely",ref_table=my_mod.config,ref_value="free_weekly_deck"})}},
-        {n=G.UIT.R,config={align="cm",padding=0.1},nodes={create_toggle({label="Enable Suggestive Sprites",ref_table=my_mod.config,ref_value="suggestive_sprites"})}},
-        {n=G.UIT.R,config={align="cm",padding=0.05},nodes={{n=G.UIT.T,config={text="(Changes require game restart to take effect)",scale=0.35,colour=G.C.RED}}}},
-        {n=G.UIT.R,config={align="cm",padding=0.2},nodes={{n=G.UIT.T,config={text="Thank you for giving a chance to my mod :3",scale=0.4,colour=G.C.UI.TEXT_LIGHT}}}}
+-- ==============================================================================
+-- BOTÓN PERSONALIZADO (A PRUEBA DE FALLOS)
+-- ==============================================================================
+local function kranlax_btn(label, action, color, w, h)
+    return {n=G.UIT.C, config={align="cm", padding=0.1, r=0.1, hover=true, colour=color, button=action, shadow=true, minw=w or 2, minh=h or 0.8}, nodes={
+        {n=G.UIT.T, config={text=label, scale=0.45, colour={1, 1, 1, 1}}}
+    }}
+end
+
+my_mod.config_tab = function()
+    return {n=G.UIT.ROOT, config={align="cm", padding=0.05, colour={0,0,0,0}}, nodes={
+        {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={create_toggle({label="Unlock Weekly Challenge deck freely", ref_table=my_mod.config, ref_value="free_weekly_deck"})}},
+        {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={create_toggle({label="Enable Suggestive Sprites", ref_table=my_mod.config, ref_value="suggestive_sprites"})}},
+        
+        -- EL NUEVO BOTÓN DEL SHOWCASE
+        {n=G.UIT.R, config={align="cm", padding=0.2}, nodes={
+            kranlax_btn("Abrir Showcase de Cartas", "kranlaxs_open_showcase", {0.9, 0.5, 0.1, 1}, 6, 1)
+        }},
+
+        {n=G.UIT.R, config={align="cm", padding=0.05}, nodes={{n=G.UIT.T, config={text="(Changes require game restart to take effect)", scale=0.35, colour={0.8, 0.2, 0.2, 1}}}}},
+        {n=G.UIT.R, config={align="cm", padding=0.2}, nodes={{n=G.UIT.T, config={text="Thank you for giving a chance to my mod :3", scale=0.4, colour={1, 1, 1, 1}}}}}
     }}
 end
 
@@ -179,15 +194,12 @@ end
 -- HOOKS: MEMORIA DE LA CARTA REPLAY (UNO)
 -- ==============================================================================
 if not SMODS.kranlaxs_replay_hooks then
-    
-    -- 1. Tomar la "foto" de las cartas al momento de jugarlas
     local orig_play_cards = G.FUNCS.play_cards_from_highlighted
     G.FUNCS.play_cards_from_highlighted = function(e)
         if G.GAME then
             G.GAME.kranlaxs_replay_memory = {}
             if G.hand and G.hand.highlighted then
                 for i = 1, #G.hand.highlighted do
-                    -- Guardamos la referencia exacta de cada carta seleccionada
                     table.insert(G.GAME.kranlaxs_replay_memory, G.hand.highlighted[i])
                 end
             end
@@ -195,20 +207,17 @@ if not SMODS.kranlaxs_replay_hooks then
         orig_play_cards(e)
     end
 
-    -- 2. Limpiar la memoria al terminar la ronda (Pantalla de recompensas)
     local orig_cash_out = G.FUNCS.cash_out
     G.FUNCS.cash_out = function(e)
         if G.GAME then G.GAME.kranlaxs_replay_memory = {} end
         orig_cash_out(e)
     end
     
-    -- 3. Seguro extra: Limpiar la memoria al seleccionar una nueva ciega
     local orig_set_blind = Blind.set_blind
     function Blind:set_blind(blind, reset, silent)
         orig_set_blind(self, blind, reset, silent)
         if G.GAME then G.GAME.kranlaxs_replay_memory = {} end
     end
-
     SMODS.kranlaxs_replay_hooks = true
 end
 
@@ -218,9 +227,7 @@ end
 if not SMODS.kranlaxs_shield_endround_hook then
     local orig_end_round = end_round
     end_round = function()
-        -- Si la ronda se acaba y NO tenemos las fichas necesarias (Vamos a morir)
         if G.GAME and G.GAME.blind and G.GAME.chips < G.GAME.blind.chips then
-            
             local shield_card = nil
             if G.consumeables and G.consumeables.cards then
                 for _, v in ipairs(G.consumeables.cards) do
@@ -230,27 +237,20 @@ if not SMODS.kranlaxs_shield_endround_hook then
                     end
                 end
             end
-            
             if shield_card then
-                -- ¡Salvación de último milisegundo!
                 shield_card.getting_sliced = true
-                
-                -- Engañamos al juego dándote los puntos exactos para sobrevivir
                 G.GAME.chips = G.GAME.blind.chips 
-                
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
                     func = function()
-                        shield_card:start_dissolve({G.C.BLUE}, nil, 1.6)
+                        shield_card:start_dissolve({G.C.SECONDARY_SET.Tarot}, nil, 1.6)
                         play_sound('tarot1')
                         return true
                     end
                 }))
-                card_eval_status_text(shield_card, 'extra', nil, nil, nil, {message = "¡Salvado!", colour = G.C.BLUE})
+                card_eval_status_text(shield_card, 'extra', nil, nil, nil, {message = "¡Salvado!", colour = G.C.SECONDARY_SET.Tarot})
             end
         end
-        
-        -- Ejecutamos el final de ronda normal (que ahora creerá que sí ganaste)
         orig_end_round()
     end
     SMODS.kranlaxs_shield_endround_hook = true
@@ -262,7 +262,6 @@ end
 if not SMODS.kranlaxs_customdraw_hook then
     local orig_discard = G.FUNCS.discard_cards_from_highlighted
     G.FUNCS.discard_cards_from_highlighted = function(e, hook)
-        -- Si tienes cartas seleccionadas y te quedan descartes disponibles, sumamos 1 al contador
         if G.GAME and G.hand and G.hand.highlighted and #G.hand.highlighted > 0 and G.GAME.current_round.discards_left > 0 then
             G.GAME.kranlaxs_custom_draw_tally = (G.GAME.kranlaxs_custom_draw_tally or 0) + 1
         end
@@ -340,7 +339,7 @@ if not SMODS.kranlaxs_crisis_pay_hooked then
 end
 
 -- 4. Crisis de Identidad
-SMODS.Challenge{key='reto_doppelganger',loc_txt={name='Crisis de Identidad',text={"Empiezas con {C:attention}5 Doppelgängers{}","({C:attention}Eternos{}).","Todos los comodines están","{C:attention}baneados{} de la tienda.","No puedes conseguir más","{C:attention}espacios de comodín{}."}},unlocked=function() return req_reto('c_kranlaxs_crisis_economica') end,rules={custom={{id='kran_doppel_1'}},modifiers={{id='joker_slots',value=5}}},jokers={{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true}},deck={type='Challenge Deck'},restrictions={banned_cards={{id='v_antimatter'},{id='c_ectoplasm'}},banned_tags={{id='tag_negative'}},banned_other={}}}
+SMODS.Challenge{key='reto_doppelganger',loc_txt={name='Crisis de Identidad',text={"Empiezas con {C:attention}5 Doppelgängers{}","({C:attention}Eternos{}).","Todos comodines están","{C:attention}baneados{} de la tienda.","No puedes conseguir más","{C:attention}espacios de comodín{}."}},unlocked=function() return req_reto('c_kranlaxs_crisis_economica') end,rules={custom={{id='kran_doppel_1'}},modifiers={{id='joker_slots',value=5}}},jokers={{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true},{id='j_kranlaxs_doppelganger',eternal=true}},deck={type='Challenge Deck'},restrictions={banned_cards={{id='v_antimatter'},{id='c_ectoplasm'}},banned_tags={{id='tag_negative'}},banned_other={}}}
 if not SMODS.kranlaxs_ban_all_jokers_hooked then
     local orig_start_run=Game.start_run
     function Game:start_run(args)
@@ -485,7 +484,7 @@ SMODS.Stake{
     atlas = 'CustomStakes',
     sticker_atlas = 'CustomCompletation',
     sticker_pos = {x = 5, y = 0},
-    colour = HEX("8B0000"), -- Rojo oscuro
+    colour = HEX("8B0000"),
     modifiers = function() 
         G.GAME.starting_params.joker_slots = G.GAME.starting_params.joker_slots - 1 
     end
@@ -503,18 +502,16 @@ SMODS.Stake{
     atlas = 'CustomStakes',
     sticker_atlas = 'CustomCompletation',
     sticker_pos = {x = 6, y = 0},
-    colour = HEX("A6F2ED"), -- Cian cristalino
+    colour = HEX("A6F2ED"),
     modifiers = function() 
         G.GAME.modifiers.kranlaxs_glass_scaling = true 
     end
 }
 
--- Hook para hacer que las ciegas escalen aún más rápido
 if not SMODS.kranlaxs_glass_stake_hook then
     local orig_get_blind_amount = get_blind_amount
     function get_blind_amount(ante)
         local amt = orig_get_blind_amount(ante)
-        -- Si estamos en Pozo de Cristal y pasamos del Ante 1, multiplica el requisito exponencialmente
         if G.GAME and G.GAME.modifiers and G.GAME.modifiers.kranlaxs_glass_scaling and ante >= 2 then
             amt = amt * (1.25 ^ (ante - 1))
         end
@@ -524,7 +521,7 @@ if not SMODS.kranlaxs_glass_stake_hook then
 end
 
 -- ==============================================================================
--- NUEVA DIFICULTAD: APUESTA DE PLATINO (ACTUALIZADA)
+-- NUEVA DIFICULTAD: APUESTA DE PLATINO
 -- ==============================================================================
 SMODS.Stake{
     key = 'platinum',
@@ -540,3 +537,237 @@ SMODS.Stake{
         G.GAME.win_ante = (G.GAME.win_ante or 8) + 2 
     end
 }
+
+-- ==============================================================================
+-- KRANLAX'S SHOWCASE ENGINE FINAL V12 (CON LECTURA CORRECTA DE BARAJAS)
+-- ==============================================================================
+G.kranlaxs_showcase = { pools = {}, pool_idx = 1, item_idx = 1 }
+
+G.FUNCS.kranlaxs_sc_render = function()
+    local pool = G.kranlaxs_showcase.pools[G.kranlaxs_showcase.pool_idx]
+    if not pool then return end
+    local item = pool.data[G.kranlaxs_showcase.item_idx]
+
+    local is_back = (item.set == 'Back')
+    local text_rows = {}
+    
+    -- DIBUJAMOS LA CARTA COMO UNA IMAGEN (Sprite seguro)
+    local atlas_key = item.atlas or (is_back and 'centers') or item.set or 'Joker'
+    if not G.ASSET_ATLAS[atlas_key] then atlas_key = 'Joker' end
+    local pos = item.pos or {x=0,y=0}
+    local sprite = Sprite(0, 0, G.CARD_W * 1.5, G.CARD_H * 1.5, G.ASSET_ATLAS[atlas_key], pos)
+
+    -- GENERACIÓN SEGURA DE TEXTO
+    local desc_dict = nil
+
+    if is_back then
+        -- MODO BARAJA: Las pasamos por el generador de UI oficial para que parsee los colores {C:attention}
+        local safe_vars = {}
+        if type(item.loc_vars) == 'function' then
+            -- Llamamos a su función nativa de variables en caso de que modifique el número de descartes, etc.
+            local dummy_info = {config = item.config or {}}
+            local ok, res = pcall(item.loc_vars, item, dummy_info, nil)
+            if ok and res and res.vars then safe_vars = res.vars end
+        end
+        for i = 1, 10 do if type(safe_vars[i]) == 'nil' then safe_vars[i] = "?" end end
+        
+        -- Al pasar el item directamente a 'generate_card_ui', los tags de colores se aplican correctamente
+        desc_dict = generate_card_ui(item, nil, safe_vars, 'Back', nil, false, nil, nil, nil)
+    else
+        -- MODO JOKER / CONSUMIBLE
+        local dummy = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CARDS.empty, item)
+        dummy.bypass_discovery_center = true
+        dummy.bypass_discovery_ui = true
+        dummy.bypass_lock_ui = true
+        dummy.states.visible = false 
+        
+        local vars = (dummy.generate_loc_vars and dummy:generate_loc_vars({})) and dummy:generate_loc_vars({}).vars or {}
+        local safe_vars = {}
+        for i = 1, 10 do
+            safe_vars[i] = vars[i]
+            if type(safe_vars[i]) == 'nil' then
+                if i == 1 and item.config and item.config.mult then safe_vars[i] = item.config.mult
+                elseif i == 1 and item.config and item.config.x_mult then safe_vars[i] = item.config.x_mult
+                elseif i == 2 and item.config and item.config.x_mult_loss then safe_vars[i] = item.config.x_mult_loss
+                else safe_vars[i] = "?" end
+            end
+        end
+        
+        if item.key == 'j_joker' then safe_vars[1] = item.config.mult or 4 end
+        if item.key == 'j_ramen' then safe_vars[1] = item.config.x_mult or 2; safe_vars[2] = item.config.x_mult_loss or 0.01 end
+
+        desc_dict = generate_card_ui(item, nil, safe_vars, item.set, nil, false, nil, nil, dummy)
+        dummy:remove()
+    end
+
+    -- EL CAZADOR DE FANTASMAS (Elimina objetos 3D basura que causan lag)
+    local function kill_orphans(t)
+        if type(t) ~= 'table' then return end
+        if t.config and t.config.object and type(t.config.object.remove) == 'function' then
+            t.config.object:remove()
+            t.config.object = nil
+        end
+        for k, v in pairs(t) do
+            if k ~= 'object' and type(v) == 'table' then 
+                kill_orphans(v) 
+            end
+        end
+    end
+
+    if desc_dict then
+        kill_orphans(desc_dict.name)
+        kill_orphans(desc_dict.info)
+        kill_orphans(desc_dict.badges)
+        
+        if desc_dict.main then
+            for _, row in ipairs(desc_dict.main) do
+                if type(row) == 'table' then
+                    local clean_row = {}
+                    for _, v in ipairs(row) do
+                        if type(v) == 'table' then table.insert(clean_row, v) end
+                    end
+                    if #clean_row > 0 then
+                        table.insert(text_rows, {n=G.UIT.R, config={align="cm", padding=0.02}, nodes=clean_row})
+                    end
+                end
+            end
+        end
+    end
+
+    if #text_rows == 0 then
+        table.insert(text_rows, {n=G.UIT.T, config={text="...", scale=0.4, colour={1,1,1,1}}})
+    end
+
+    local name_text = item.name or item.key
+    local loc_data = G.localization.descriptions[item.set] and G.localization.descriptions[item.set][item.key]
+    if loc_data and loc_data.name then name_text = loc_data.name end
+
+    -- INTERFAZ ANCLADA
+    local t = {
+        n = G.UIT.ROOT, config = {align = "cm", colour = {0,0,0,0}}, nodes = {
+            {n=G.UIT.C, config={align="cm", colour = {0.1, 0.1, 0.1, 1}, padding=0.3, r=0.2, outline=1, outline_colour={1,1,1,1}}, nodes={
+                
+                {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={
+                    kranlax_btn("<", "kranlaxs_sc_cat_prev", {0.8, 0.2, 0.2, 1}, 1, 0.8),
+                    {n=G.UIT.C, config={align="cm", minw=5}, nodes={
+                        {n=G.UIT.T, config={text="Categoría: " .. pool.name, scale=0.5, colour={1, 1, 1, 1}}}
+                    }},
+                    kranlax_btn(">", "kranlaxs_sc_cat_next", {0.2, 0.4, 0.8, 1}, 1, 0.8)
+                }},
+                
+                {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={
+                    {n=G.UIT.T, config={text=name_text .. " (" .. G.kranlaxs_showcase.item_idx .. "/" .. #pool.data .. ")", scale=0.6, colour={1, 1, 1, 1}}}
+                }},
+                
+                {n=G.UIT.R, config={align="cm", padding=0.2}, nodes={
+                    {n=G.UIT.O, config={object = sprite}}
+                }},
+                
+                {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={
+                    kranlax_btn("Anterior", "kranlaxs_sc_prev", {0.8, 0.2, 0.2, 1}, 2.5, 0.8),
+                    {n=G.UIT.C, config={align="cm", minw=1}, nodes={}}, 
+                    kranlax_btn("Siguiente", "kranlaxs_sc_next", {0.2, 0.4, 0.8, 1}, 2.5, 0.8)
+                }},
+                
+                {n=G.UIT.R, config={align="cm", padding=0.1}, nodes={
+                    {n=G.UIT.C, config={align="cm", colour={0.15, 0.15, 0.15, 1}, r=0.1, padding=0.2, minw=7, minh=2}, nodes=text_rows}
+                }},
+
+                {n=G.UIT.R, config={align="cm", padding=0.2}, nodes={
+                    kranlax_btn("Cerrar Showcase", "kranlaxs_sc_close", {0.8, 0.2, 0.2, 1}, 4, 1)
+                }}
+            }}
+        }
+    }
+
+    if G.OVERLAY_MENU then G.OVERLAY_MENU:remove() end
+    G.OVERLAY_MENU = UIBox{
+        definition = t,
+        config = {align="cm", offset={x=0,y=0}, major=G.ROOM_ATTACH}
+    }
+end
+
+G.FUNCS.kranlaxs_open_showcase = function(e)
+    G.FUNCS.exit_overlay_menu()
+    
+    local pools = {}
+    local target_sets = {"Joker", "Tarot", "Planet", "Spectral", "Voucher", "Booster", "Back"}
+    
+    if SMODS.ConsumableTypes then
+        for k, _ in pairs(SMODS.ConsumableTypes) do
+            local found = false
+            for _, s in ipairs(target_sets) do if s == k then found = true end end
+            if not found and k ~= 'Tarot' and k ~= 'Planet' and k ~= 'Spectral' then
+                table.insert(target_sets, k)
+            end
+        end
+    end
+    
+    for _, set_name in ipairs(target_sets) do
+        local items = {}
+        for k, v in pairs(G.P_CENTERS) do
+            if v.set == set_name and not v.demo then
+                -- EL FILTRO VANILLA
+                local is_vanilla = (not v.mod) or (v.mod and v.mod.id == "Balatro")
+                if (set_name == "Joker" or set_name == "Back") and is_vanilla then
+                    -- Las ignoramos
+                else
+                    table.insert(items, v)
+                end
+            end
+        end
+        if #items > 0 then
+            table.sort(items, function(a, b) 
+                local oa = a.order or 99999
+                local ob = b.order or 99999
+                if oa == ob then return (a.key or "") < (b.key or "") end
+                return oa < ob
+            end)
+            table.insert(pools, {name = set_name, data = items})
+        end
+    end
+    
+    G.kranlaxs_showcase = { pools = pools, pool_idx = 1, item_idx = 1 }
+    
+    G.CONTROLLER.locks.frame = true 
+    G.FUNCS.kranlaxs_sc_render()
+end
+
+G.FUNCS.kranlaxs_sc_next = function(e)
+    local pool = G.kranlaxs_showcase.pools[G.kranlaxs_showcase.pool_idx]
+    G.kranlaxs_showcase.item_idx = G.kranlaxs_showcase.item_idx + 1
+    if G.kranlaxs_showcase.item_idx > #pool.data then G.kranlaxs_showcase.item_idx = 1 end
+    G.FUNCS.kranlaxs_sc_render()
+end
+
+G.FUNCS.kranlaxs_sc_prev = function(e)
+    local pool = G.kranlaxs_showcase.pools[G.kranlaxs_showcase.pool_idx]
+    G.kranlaxs_showcase.item_idx = G.kranlaxs_showcase.item_idx - 1
+    if G.kranlaxs_showcase.item_idx < 1 then G.kranlaxs_showcase.item_idx = #pool.data end
+    G.FUNCS.kranlaxs_sc_render()
+end
+
+G.FUNCS.kranlaxs_sc_cat_next = function(e)
+    G.kranlaxs_showcase.pool_idx = G.kranlaxs_showcase.pool_idx + 1
+    if G.kranlaxs_showcase.pool_idx > #G.kranlaxs_showcase.pools then G.kranlaxs_showcase.pool_idx = 1 end
+    G.kranlaxs_showcase.item_idx = 1
+    G.FUNCS.kranlaxs_sc_render()
+end
+
+G.FUNCS.kranlaxs_sc_cat_prev = function(e)
+    G.kranlaxs_showcase.pool_idx = G.kranlaxs_showcase.pool_idx - 1
+    if G.kranlaxs_showcase.pool_idx < 1 then G.kranlaxs_showcase.pool_idx = #G.kranlaxs_showcase.pools end
+    G.kranlaxs_showcase.item_idx = 1
+    G.FUNCS.kranlaxs_sc_render()
+end
+
+G.FUNCS.kranlaxs_sc_close = function(e)
+    if G.OVERLAY_MENU then
+        G.OVERLAY_MENU:remove()
+        G.OVERLAY_MENU = nil
+    end
+    G.CONTROLLER.locks.frame = false 
+    
+    -- EL REINICIO
+    love.event.quit()
+end
