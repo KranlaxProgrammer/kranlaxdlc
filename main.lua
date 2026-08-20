@@ -22,7 +22,11 @@ SMODS.Atlas({key="CustomCompletation",path="CustomCompletation.png",px=71,py=95,
 SMODS.Atlas({key="CustomTags",path="CustomTags.png",px=34,py=34,atlas_table="ASSET_ATLAS"})
 SMODS.Atlas({key="anonback",path="anonback.png",px=71,py=95,atlas_table="ANIMATION_ATLAS",frames=10})
 SMODS.Atlas({key="corruptedjoker",path="corruptedjoker.png",px=71,py=95,atlas_table="ASSET_ATLAS"})
-
+SMODS.Shader({key = 'underwater', path = 'underwater.fs'})
+SMODS.Shader({key = 'cosmic', path = 'cosmic.fs'})
+SMODS.Shader({key = 'cursed', path = 'cursed.fs'})
+SMODS.Shader({key = 'monochrome', path = 'monochrome.fs'})
+SMODS.Shader({key = 'sepia', path = 'sepia.fs'})
 
 if sug then
     local sug_w,sug_h=266,332 
@@ -48,6 +52,8 @@ SMODS.Sound({
     key = 'music_inverse',
     path = 'inverse.ogg'
 })
+
+
 
 -- Carga de Stickers
 SMODS.Sticker{key='fat',loc_txt={label='Fat',name='Fat',text={}},atlas=sug and 'sug_fat' or 'CustomStickers',pos={x=0,y=0},badge_colour=HEX('c75d32'),prefix_config={key=false},no_collection=true}
@@ -93,7 +99,7 @@ local load_files={
     "consumables/grayquartz.lua","consumables/transparentquartz.lua","consumables/redquartz.lua","consumables/celestequartz.lua","consumables/yellowquartz.lua",
     "consumables/greenquartz.lua","consumables/brownquartz.lua","consumables/turquoisequartz.lua","consumables/orangequartz.lua","consumables/lapislazuli.lua",
     "consumables/cinnabar.lua","consumables/graphite.lua","consumables/uranium.lua","consumables/replay.lua", "consumables/discardall.lua", "consumables/shield.lua", "consumables/misery.lua", "consumables/gift.lua", "consumables/customdraw.lua", 
-    "seals/pinkseal.lua","seals/grayseal.lua","seals/mintseal.lua","seals/orangeseal.lua","seals/brownseal.lua","seals/whiteseal.lua",
+    "seals/pinkseal.lua","editions/cosmic.lua","editions/monochrome.lua","editions/sepia.lua","editions/cursed.lua","editions/underwater.lua","seals/grayseal.lua","seals/mintseal.lua","seals/orangeseal.lua","seals/brownseal.lua","seals/whiteseal.lua",
     "vouchers/more_stock.lua","vouchers/even_more_stock.lua","vouchers/stickerfever.lua","vouchers/stickeralbum.lua","vouchers/hotfix.lua","vouchers/version2.lua",
     "decks/week_challenge.lua","decks/chaos_deck.lua","decks/dungeondeck.lua","decks/space_deck.lua","decks/bugged_deck.lua","boosters.lua"
 }
@@ -729,7 +735,7 @@ G.FUNCS.kranlaxs_open_showcase = function(e)
     
     G.kranlaxs_showcase = { pools = pools, pool_idx = 1, item_idx = 1 }
     
-    G.CONTROLLER.locks.frame = true 
+    G.CONTROLLER.locks.frame = false 
     G.FUNCS.kranlaxs_sc_render()
 end
 
