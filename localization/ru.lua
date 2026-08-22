@@ -200,8 +200,22 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "Сохраненный Мега-Обратный Тег", text = {"Мгновенно дает бесплатный", "{C:attention}Сохраненное Мега-Обратное Таро{}"}},
             tag_kranlaxs_quartz_tag = {name = "Тег Кварца", text = {"Создает случайный {C:attention}Кварц{}", "{C:inactive}(Нужно место){}"}},
             tag_kranlaxs_sticker_remover = {name = "Тег Очищения", text = {"Удаляет {C:attention}Вечный{},", "{C:attention}Скоропортящийся{} или {C:attention}Арендный{} стикер с", "со случайного {C:attention}Джокера{}", "{C:inactive}(Дает {X:money,C:white} $5 {C:inactive} если стикеров нет){}"}},
-            tag_kranlaxs_legendary = {name = "Легендарный Тег", text = {"В магазине есть бесплатный", "{C:legendary}Легендарный Джокер{}"}}
+            tag_kranlaxs_legendary = {name = "Легендарный Тег", text = {"В магазине есть бесплатный", "{C:legendary}Легендарный Джокер{}"}},
+            tag_kranlaxs_cosmic_tag = {name = "Космическая метка", text = {"Добавляет {C:dark_edition}Космическое{} издание", "случайной карте в вашей {C:attention}колоде{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Желтоватая метка", text = {"Добавляет издание {C:attention}Сепия{}", "случайной карте в вашей {C:attention}колоде{}"}},
+            tag_kranlaxs_boring_tag = {name = "Скучная метка", text = {"Следующий джокер в магазине", "будет {C:dark_edition}Монохромным{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Демоническая метка", text = {"Следующий джокер в магазине", "будет {C:red}Проклятым{}"}},
+            tag_kranlaxs_wet_tag = {name = "Мокрая метка", text = {"Добавляет {C:blue}Подводное{} издание", "случайной карте в вашей {C:attention}колоде{}"}},
+            tag_kranlaxs_zen_tag = {name = "Метка Дзен", text = {"Уменьшает текущее", "{C:attention}базовое Анте{} на {C:blue}-1{}"}}
         },
+
+        Edition = {
+            e_kranlaxs_cosmic = {name = "Космическое", text = {"Повышает уровень {C:attention}выбранной покерной", "{C:attention}комбинации{} при {C:red}сбросе{}"}},
+            e_kranlaxs_sepia = {name = "Сепия", text = {"Шанс {C:green}#1# из #2#{} создать {C:attention}Метку{},", "если находится в руке при подсчете очков"}},
+            e_kranlaxs_cursed = {name = "Проклятое", text = {"{C:attention}Уравнивает{} фишки и множитель при", "подсчете очков. Шанс {C:green}#1# из #2#{},", "что после этого карта будет {C:red}уничтожена{}."}},
+            e_kranlaxs_monochrome = {name = "Монохромное", text = {"{X:dark_edition,C:white} ^#1# {} Множ.", "{C:red}Уничтожается{} при подсчете очков"}},
+            e_kranlaxs_underwater = {name = "Подводное", text = {"{X:chips,C:white} X#1# {} Фишек"}}
+        }
 
 
         Other = {
@@ -264,7 +278,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "Сохраненное Обратное Таро",
             p_kranlaxs_invtarot_store_5_1 = "Сохраненное Обратное Таро Джамбо",
             p_kranlaxs_invtarot_store_5_2 = "Сохраненное Мега-Обратное Таро",
-            kranlaxs_wave = "Водный"
+            kranlaxs_wave = "Водный",
+            e_kranlaxs_cosmic = "Космическое",
+            e_kranlaxs_sepia = "Сепия",
+            e_kranlaxs_cursed = "Проклятое",
+            e_kranlaxs_monochrome = "Монохромное",
+            e_kranlaxs_underwater = "Подводное"
         },
 
         v_text = {

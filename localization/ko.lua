@@ -188,11 +188,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "저장된 메가 리버스 태그", text = {"무료 {C:attention}저장된 메가 리버스 타로{}를", "즉시 제공함"}},
             tag_kranlaxs_quartz_tag = {name = "석영 태그", text = {"무작위 {C:attention}석영{} 생성", "{C:inactive}(빈 공간 필요){}"}},
             tag_kranlaxs_sticker_remover = {name = "클렌저 태그", text = {"무작위 {C:attention}조커{}에서", "{C:attention}이터널{}, {C:attention}페리셔블{} 또는 {C:attention}렌탈{} 스티커 제거", "{C:inactive}(스티커가 없으면 {X:money,C:white} $5 {C:inactive} 제공){}"}},
-            tag_kranlaxs_legendary = {name = "레전더리 태그", text = {"상점에 무료", "{C:legendary}레전더리 조커{}가 있음"}}
+            tag_kranlaxs_legendary = {name = "레전더리 태그", text = {"상점에 무료", "{C:legendary}레전더리 조커{}가 있음"}},
+            tag_kranlaxs_cosmic_tag = {name = "코스믹 태그", text = {"{C:attention}덱{}의 무작위 카드 1장에", "{C:dark_edition}코스믹{} 에디션을 추가합니다"}},
+            tag_kranlaxs_yellowish_tag = {name = "누런 태그", text = {"{C:attention}덱{}의 무작위 카드 1장에", "{C:attention}세피아{} 에디션을 추가합니다"}},
+            tag_kranlaxs_boring_tag = {name = "지루한 태그", text = {"상점의 다음 조커가", "{C:dark_edition}흑백{}이 됩니다"}},
+            tag_kranlaxs_demonic_tag = {name = "악마 태그", text = {"상점의 다음 조커가", "{C:red}저주받은{} 상태가 됩니다"}},
+            tag_kranlaxs_wet_tag = {name = "젖은 태그", text = {"{C:attention}덱{}의 무작위 카드 1장에", "{C:blue}수중{} 에디션을 추가합니다"}},
+            tag_kranlaxs_zen_tag = {name = "선(禪) 태그", text = {"현재 {C:attention}기본 앤티{}를", "{C:blue}-1{} 줄입니다"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "아쿠아틱", text = {"{X:chips,C:white} X#1# {} 칩"}}
+            e_kranlaxs_cosmic = {name = "코스믹", text = {"{C:red}버릴 때{} {C:attention}선택된 포커 핸드{}의", "레벨을 올립니다"}},
+            e_kranlaxs_sepia = {name = "세피아", text = {"점수 계산 시 패에 있으면", "{C:green}#2#분의 #1#{} 확률로 {C:attention}태그{}를 생성합니다"}},
+            e_kranlaxs_cursed = {name = "저주받은", text = {"점수 계산 시 칩과 배수를 {C:attention}평균화{}합니다.", "이후 {C:green}#2#분의 #1#{} 확률로 {C:red}파괴{}됩니다."}},
+            e_kranlaxs_monochrome = {name = "흑백", text = {"{X:dark_edition,C:white} ^#1# {} 배수", "점수 계산 시 {C:red}파괴{}됩니다"}},
+            e_kranlaxs_underwater = {name = "수중", text = {"{X:chips,C:white} X#1# {} 칩"}}
         },
 
         Other = {
@@ -253,7 +263,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "저장된 리버스 타로",
             p_kranlaxs_invtarot_store_5_1 = "저장된 점보 리버스 타로",
             p_kranlaxs_invtarot_store_5_2 = "저장된 메가 리버스 타로",
-            kranlaxs_wave = "아쿠아틱"
+            kranlaxs_wave = "아쿠아틱",
+            e_kranlaxs_cosmic = "코스믹",
+            e_kranlaxs_sepia = "세피아",
+            e_kranlaxs_cursed = "저주받은",
+            e_kranlaxs_monochrome = "흑백",
+            e_kranlaxs_underwater = "수중"
         },
 
         v_text = {

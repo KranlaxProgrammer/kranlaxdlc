@@ -188,11 +188,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "储存的巨型逆位标签", text = {"立即获得一个免费的", "{C:attention}储存的巨型逆位塔罗{}"}},
             tag_kranlaxs_quartz_tag = {name = "石英标签", text = {"生成一个随机{C:attention}石英{}", "{C:inactive}(必须有空位){}"}},
             tag_kranlaxs_sticker_remover = {name = "净化标签", text = {"从一个随机{C:attention}小丑牌{}身上", "移除{C:attention}永恒{}、{C:attention}易腐{}或{C:attention}租赁{}贴纸", "{C:inactive}(如果没有贴纸，则给{X:money,C:white} $5 {C:inactive}){}"}},
-            tag_kranlaxs_legendary = {name = "传奇标签", text = {"商店里有一个免费的", "{C:legendary}传奇小丑牌{}"}}
+            tag_kranlaxs_legendary = {name = "传奇标签", text = {"商店里有一个免费的", "{C:legendary}传奇小丑牌{}"}},
+            tag_kranlaxs_cosmic_tag = {name = "宇宙标签", text = {"为你{C:attention}牌组{}中的一张随机牌", "添加{C:dark_edition}宇宙{}版本"}},
+            tag_kranlaxs_yellowish_tag = {name = "泛黄标签", text = {"为你{C:attention}牌组{}中的一张随机牌", "添加{C:attention}深乌{}版本"}},
+            tag_kranlaxs_boring_tag = {name = "无聊标签", text = {"商店里的下一张小丑牌", "必定为{C:dark_edition}单色{}"}},
+            tag_kranlaxs_demonic_tag = {name = "恶魔标签", text = {"商店里的下一张小丑牌", "必定带有{C:red}诅咒{}"}},
+            tag_kranlaxs_wet_tag = {name = "潮湿标签", text = {"为你{C:attention}牌组{}中的一张随机牌", "添加{C:blue}水下{}版本"}},
+            tag_kranlaxs_zen_tag = {name = "禅意标签", text = {"将当前{C:attention}基础底注{}减少{C:blue}-1{}"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "水生", text = {"{X:chips,C:white} X#1# {} 筹码"}}
+            e_kranlaxs_cosmic = {name = "宇宙", text = {"{C:red}弃牌{}时，", "升级{C:attention}选中的牌型{}"}},
+            e_kranlaxs_sepia = {name = "深乌", text = {"计分时若在手牌中，", "有{C:green}#1#/#2#{}的几率生成一个{C:attention}标签{}"}},
+            e_kranlaxs_cursed = {name = "诅咒", text = {"计分时{C:attention}平衡{}筹码和倍率。", "之后有{C:green}#1#/#2#{}的几率{C:red}摧毁{}自身。"}},
+            e_kranlaxs_monochrome = {name = "单色", text = {"{X:dark_edition,C:white} ^#1# {} 倍率", "计分时{C:red}摧毁{}自身"}},
+            e_kranlaxs_underwater = {name = "水下", text = {"{X:chips,C:white} X#1# {} 筹码"}}
         },
 
         Other = {
@@ -253,7 +263,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "储存的逆位塔罗",
             p_kranlaxs_invtarot_store_5_1 = "储存的超大逆位塔罗",
             p_kranlaxs_invtarot_store_5_2 = "储存的巨型逆位塔罗",
-            kranlaxs_wave = "水生"
+            kranlaxs_wave = "水生",
+            e_kranlaxs_cosmic = "宇宙",
+            e_kranlaxs_sepia = "深乌",
+            e_kranlaxs_cursed = "诅咒",
+            e_kranlaxs_monochrome = "单色",
+            e_kranlaxs_underwater = "水下"
         },
 
         v_text = {

@@ -200,11 +200,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "Mega Marcador Inverso Guardado", text = {"Concede um {C:attention}Mega Tarot Inverso Guardado{}", "grátis instantaneamente"}},
             tag_kranlaxs_quartz_tag = {name = "Marcador de Quartzo", text = {"Cria um {C:attention}Quartzo{} aleatório", "{C:inactive}(Deve ter espaço){}"}},
             tag_kranlaxs_sticker_remover = {name = "Marcador Limpador", text = {"Remove um adesivo {C:attention}Eterno{},", "{C:attention}Perecível{} ou de {C:attention}Aluguel{} de", "um {C:attention}Coringa{} aleatório", "{C:inactive}(Dá {X:money,C:white} $5 {C:inactive} se não houver adesivos){}"}},
-            tag_kranlaxs_legendary = {name = "Marcador Lendário", text = {"A loja tem um", "{C:legendary}Coringa Lendário{} grátis"}}
+            tag_kranlaxs_legendary = {name = "Marcador Lendário", text = {"A loja tem um", "{C:legendary}Coringa Lendário{} grátis"}},
+            tag_kranlaxs_cosmic_tag = {name = "Marcador Cósmico", text = {"Adiciona a edição {C:dark_edition}Cósmica{}", "a uma carta aleatória", "no seu {C:attention}baralho{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Marcador Amarelado", text = {"Adiciona a edição {C:attention}Sépia{}", "a uma carta aleatória", "no seu {C:attention}baralho{}"}},
+            tag_kranlaxs_boring_tag = {name = "Marcador Entediante", text = {"O próximo Curinga na loja", "é {C:dark_edition}Monocromático{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Marcador Demoníaco", text = {"O próximo Curinga na loja", "é {C:red}Amaldiçoado{}"}},
+            tag_kranlaxs_wet_tag = {name = "Marcador Molhado", text = {"Adiciona a edição {C:blue}Subaquática{}", "a uma carta aleatória", "no seu {C:attention}baralho{}"}},
+            tag_kranlaxs_zen_tag = {name = "Marcador Zen", text = {"Reduz a {C:attention}Aposta base{}", "atual em {C:blue}-1{}"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "Aquática", text = {"{X:chips,C:white} X#1# {} Fichas"}}
+            e_kranlaxs_cosmic = {name = "Cósmica", text = {"Sobe o nível da {C:attention}mão de pôquer selecionada{}", "ao ser {C:red}descartada{}"}},
+            e_kranlaxs_sepia = {name = "Sépia", text = {"{C:green}#1# em #2#{} de chance de", "criar um {C:attention}Marcador{}", "se estiver na mão ao pontuar"}},
+            e_kranlaxs_cursed = {name = "Amaldiçoada", text = {"{C:attention}Equilibra{} Fichas e Multiplicador", "ao pontuar.", "{C:green}#1# em #2#{} de chance de", "ser {C:red}destruída{} depois."}},
+            e_kranlaxs_monochrome = {name = "Monocromática", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "É {C:red}destruída{} ao pontuar"}},
+            e_kranlaxs_underwater = {name = "Subaquática", text = {"{X:chips,C:white} X#1# {} Fichas"}}
         },
 
         Other = {
@@ -266,7 +276,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "Tarot Inverso Guardado",
             p_kranlaxs_invtarot_store_5_1 = "Tarot Inverso Guardado Jumbo",
             p_kranlaxs_invtarot_store_5_2 = "Mega Tarot Inverso Guardado",
-            kranlaxs_wave = "Aquática"
+            kranlaxs_wave = "Aquática",
+            e_kranlaxs_cosmic = "Cósmica",
+            e_kranlaxs_sepia = "Sépia",
+            e_kranlaxs_cursed = "Amaldiçoada",
+            e_kranlaxs_monochrome = "Monocromática",
+            e_kranlaxs_underwater = "Subaquática"
         },
 
         v_text = {

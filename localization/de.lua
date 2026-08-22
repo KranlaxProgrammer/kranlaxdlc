@@ -200,11 +200,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "Gespeichertes Mega Inverses Tag", text = {"Gewährt sofort ein", "kostenloses {C:attention}Gespeichertes Mega Inverses Tarot{}"}},
             tag_kranlaxs_quartz_tag = {name = "Quarz Tag", text = {"Erstellt einen zufälligen {C:attention}Quarz{}", "{C:inactive}(Muss Platz haben){}"}},
             tag_kranlaxs_sticker_remover = {name = "Reiniger Tag", text = {"Entfernt einen {C:attention}Ewigen{},", "{C:attention}Verderblichen{} oder {C:attention}Leih{}-Aufkleber von", "einem zufälligen {C:attention}Joker{}", "{C:inactive}(Gibt {X:money,C:white} $5 {C:inactive} wenn keine Aufkleber vorhanden sind){}"}},
-            tag_kranlaxs_legendary = {name = "Legendäres Tag", text = {"Shop hat einen kostenlosen", "{C:legendary}Legendären Joker{}"}}
+            tag_kranlaxs_legendary = {name = "Legendäres Tag", text = {"Shop hat einen kostenlosen", "{C:legendary}Legendären Joker{}"}},
+            tag_kranlaxs_cosmic_tag = {name = "Kosmischer Tag", text = {"Fügt einer zufälligen Karte", "in deinem {C:attention}Deck{}", "die {C:dark_edition}Kosmisch{}-Edition hinzu"}},
+            tag_kranlaxs_yellowish_tag = {name = "Gelblicher Tag", text = {"Fügt einer zufälligen Karte", "in deinem {C:attention}Deck{}", "die {C:attention}Sepia{}-Edition hinzu"}},
+            tag_kranlaxs_boring_tag = {name = "Langweiliger Tag", text = {"Der nächste Joker im Shop", "ist {C:dark_edition}Monochrom{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Dämonischer Tag", text = {"Der nächste Joker im Shop", "ist {C:red}Verflucht{}"}},
+            tag_kranlaxs_wet_tag = {name = "Nasser Tag", text = {"Fügt einer zufälligen Karte", "in deinem {C:attention}Deck{}", "die {C:blue}Unterwasser{}-Edition hinzu"}},
+            tag_kranlaxs_zen_tag = {name = "Zen Tag", text = {"Reduziert das aktuelle", "{C:attention}Basis-Ante{} um {C:blue}-1{}"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "Aquatisch", text = {"{X:chips,C:white} X#1# {} Chips"}}
+            e_kranlaxs_cosmic = {name = "Kosmisch", text = {"Wertet die {C:attention}ausgewählte Pokerhand{} auf,", "wenn sie {C:red}abgeworfen{} wird"}},
+            e_kranlaxs_sepia = {name = "Sepia", text = {"{C:green}#1# zu #2#{} Chance,", "einen {C:attention}Tag{} zu erstellen,", "wenn bei der Wertung auf der Hand"}},
+            e_kranlaxs_cursed = {name = "Verflucht", text = {"{C:attention}Gleicht{} Chips und Mult", "bei der Wertung aus.", "{C:green}#1# zu #2#{} Chance,", "sich danach zu {C:red}zerstören{}. "}},
+            e_kranlaxs_monochrome = {name = "Monochrom", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "{C:red}Zerstört{} sich bei Wertung"}},
+            e_kranlaxs_underwater = {name = "Unterwasser", text = {"{X:chips,C:white} X#1# {} Chips"}}
         },
 
         Other = {
@@ -279,7 +289,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "Gespeichertes Inverses Tarot",
             p_kranlaxs_invtarot_store_5_1 = "Gespeichertes Jumbo Inverses Tarot",
             p_kranlaxs_invtarot_store_5_2 = "Gespeichertes Mega Inverses Tarot",
-            kranlaxs_wave = "Aquatisch"
+            kranlaxs_wave = "Aquatisch",
+            e_kranlaxs_cosmic = "Kosmisch",
+            e_kranlaxs_sepia = "Sepia",
+            e_kranlaxs_cursed = "Verflucht",
+            e_kranlaxs_monochrome = "Monochrom",
+            e_kranlaxs_underwater = "Unterwasser"
         },
 
         v_text = {

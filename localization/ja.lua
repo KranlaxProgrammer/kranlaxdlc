@@ -188,11 +188,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "保存されたメガ反転タグ", text = {"無料の{C:attention}保存されたメガ反転タロット{}を", "即座に与える"}},
             tag_kranlaxs_quartz_tag = {name = "クォーツタグ", text = {"ランダムな{C:attention}クォーツ{}を生成する", "{C:inactive}(空きスロットが必要){}"}},
             tag_kranlaxs_sticker_remover = {name = "クレンザータグ", text = {"ランダムな{C:attention}ジョーカー{}から{C:attention}永遠{}、", "{C:attention}ペリシャブル{}、または{C:attention}レンタル{}の", "ステッカーを削除する", "{C:inactive}(ステッカーがない場合は {X:money,C:white} $5 {C:inactive} を与える){}"}},
-            tag_kranlaxs_legendary = {name = "レジェンダリータグ", text = {"ショップに無料の", "{C:legendary}レジェンダリージョーカー{}が並ぶ"}}
+            tag_kranlaxs_legendary = {name = "レジェンダリータグ", text = {"ショップに無料の", "{C:legendary}レジェンダリージョーカー{}が並ぶ"}},
+            tag_kranlaxs_cosmic_tag = {name = "コズミックタグ", text = {"{C:attention}デッキ{}のランダムなカード1枚に", "{C:dark_edition}コズミック{}エディションを追加する"}},
+            tag_kranlaxs_yellowish_tag = {name = "黄色っぽいタグ", text = {"{C:attention}デッキ{}のランダムなカード1枚に", "{C:attention}セピア{}エディションを追加する"}},
+            tag_kranlaxs_boring_tag = {name = "退屈なタグ", text = {"ショップの次のジョーカーが", "{C:dark_edition}モノクロ{}になる"}},
+            tag_kranlaxs_demonic_tag = {name = "悪魔のタグ", text = {"ショップの次のジョーカーが", "{C:red}呪い{}になる"}},
+            tag_kranlaxs_wet_tag = {name = "濡れたタグ", text = {"{C:attention}デッキ{}のランダムなカード1枚に", "{C:blue}水中{}エディションを追加する"}},
+            tag_kranlaxs_zen_tag = {name = "禅タグ", text = {"現在の{C:attention}ベースアンティ{}を", "{C:blue}-1{}減らす"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "水生", text = {"{X:chips,C:white} X#1# {} チップ"}}
+            e_kranlaxs_cosmic = {name = "コズミック", text = {"{C:red}ディスカード{}されたとき、", "{C:attention}選択されたポーカー役{}をレベルアップする"}},
+            e_kranlaxs_sepia = {name = "セピア", text = {"スコア計算時に手札にある場合、", "{C:green}#2#分の#1#{}の確率で{C:attention}タグ{}を作成する"}},
+            e_kranlaxs_cursed = {name = "呪い", text = {"スコア計算時にチップとマルチを{C:attention}平均化{}する。", "その後、{C:green}#2#分の#1#{}の確率で{C:red}破壊{}される。"}},
+            e_kranlaxs_monochrome = {name = "モノクロ", text = {"{X:dark_edition,C:white} ^#1# {} マルチ", "スコア計算時に{C:red}破壊{}される"}},
+            e_kranlaxs_underwater = {name = "水中", text = {"{X:chips,C:white} X#1# {} チップ"}}
         },
 
         Other = {
@@ -254,7 +264,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "保存された反転タロット",
             p_kranlaxs_invtarot_store_5_1 = "保存されたジャンボ反転タロット",
             p_kranlaxs_invtarot_store_5_2 = "保存されたメガ反転タロット",
-            kranlaxs_wave = "水生"
+            kranlaxs_wave = "水生",
+            e_kranlaxs_cosmic = "コズミック",
+            e_kranlaxs_sepia = "セピア",
+            e_kranlaxs_cursed = "呪い",
+            e_kranlaxs_monochrome = "モノクロ",
+            e_kranlaxs_underwater = "水中"
         },
 
         v_text = {

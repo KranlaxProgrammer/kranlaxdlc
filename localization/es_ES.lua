@@ -194,13 +194,52 @@ return {
             c_kranlaxs_uranium = {name = "Uranio", text = {"Mientras {C:attention}poseas esto{}, aplica 1 efecto", "aleatorio por ronda. Puede ser", "muy bueno o muy destructivo.", "{C:dark_edition}Estado actual:{}", "{C:red,E:2}#1#{}", "{C:inactive}(¿Te atreves a llevarlo?){}", "{C:inactive}(Pasivo){}"}, unlock = {"Gana una partida en {C:attention}Pozo de platino{}", "usando la {C:attention}Baraja Errática{}"}}
         },
 
+        Booster = {
+            p_kranlaxs_uno_store_3 = {name = "Paquete UNO", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:blue}UNO{}"}},
+            p_kranlaxs_uno_store_5 = {name = "Paquete UNO Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:blue}UNO{}"}},
+            p_kranlaxs_invtarot_instant_3_1 = {name = "Paquete Tarot Inverso", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:purple}Tarot Inverso{}"}},
+            p_kranlaxs_invtarot_instant_5_1 = {name = "Paquete Tarot Inverso Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
+            p_kranlaxs_invtarot_instant_5_2 = {name = "Mega Paquete Tarot Inverso", text = {"Elige {C:attention}2{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
+            p_kranlaxs_invtarot_store_3_1 = {name = "Tarot Inverso Guardado", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:purple}Tarot Inverso{}"}},
+            p_kranlaxs_invtarot_store_5_1 = {name = "Tarot Inverso Guardado Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
+            p_kranlaxs_invtarot_store_5_2 = {name = "Mega Tarot Inverso Guardado", text = {"Elige {C:attention}2{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}}
+        },
+
+        Edition = {
+            e_kranlaxs_cosmic = {name = "Cósmica", text = {"Sube de nivel la {C:attention}mano de{}", "{C:attention}póker seleccionada{}", "al ser {C:red}descartada{}"}},
+            e_kranlaxs_sepia = {name = "Sepia", text = {"{C:green}#1# en #2#{} prob. de", "crear una {C:attention}Etiqueta{}", "si está en mano al puntuar"}},
+            e_kranlaxs_cursed = {name = "Maldita", text = {"{C:attention}Equilibra{} las Fichas y", "el Multiplicador al puntuar.", "{C:green}#1# en #2#{} de prob. de", "{C:red}destruirse{} después."}},
+            e_kranlaxs_monochrome = {name = "Monocromática", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "Se {C:red}destruye{} al puntuar"}},
+            e_kranlaxs_underwater = {name = "Acuática", text = {"{X:chips,C:white} X#1# {} Fichas"}}
+        },
+
         Tag = {
             tag_kranlaxs_mega_invtarot = {name = "Etiqueta Inversa Mega", text = {"Otorga un {C:attention}Mega Paquete Tarot Inverso{}", "sin coste al instante"}},
             tag_kranlaxs_mega_uno = {name = "Etiqueta UNO Jumbo", text = {"Otorga un {C:attention}Paquete UNO Jumbo{}", "sin coste al instante"}},
             tag_kranlaxs_mega_invtarot_store = {name = "Etiqueta Inversa Mega Guardada", text = {"Otorga un {C:attention}Mega Tarot Inverso Guardado{}", "sin coste al instante"}},
             tag_kranlaxs_quartz_tag = {name = "Etiqueta de Cuarzo", text = {"Crea un {C:attention}Cuarzo{} aleatorio", "{C:inactive}(Debes tener espacio){}"}},
             tag_kranlaxs_sticker_remover = {name = "Etiqueta Limpiadora", text = {"Elimina un sticker {C:attention}Eterno{},", "{C:attention}Perecedero{} o de {C:attention}Renta{} de", "un {C:attention}Comodín{} aleatorio", "{C:inactive}(Da {X:money,C:white} $5 {C:inactive} si no hay stickers){}"}},
-            tag_kranlaxs_legendary = {name = "Etiqueta Legendaria", text = {"La tienda tiene un", "{C:legendary}Comodín Legendario{} gratis"}}
+            tag_kranlaxs_legendary = {name = "Etiqueta Legendaria", text = {"La tienda tiene un", "{C:legendary}Comodín Legendario{} gratis"}},
+            tag_kranlaxs_cosmic_tag = {name = "Etiqueta Cósmica", text = {"Añade la edición {C:dark_edition}Cósmica{}", "a una carta aleatoria", "de tu {C:attention}mazo{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Etiqueta Amarillenta", text = {"Añade la edición {C:attention}Sepia{}", "a una carta aleatoria", "de tu {C:attention}mazo{}"}},
+            tag_kranlaxs_boring_tag = {name = "Etiqueta Aburrida", text = {"El próximo Comodín", "de la tienda es {C:dark_edition}Monocromático{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Etiqueta Demoníaca", text = {"El próximo Comodín", "de la tienda está {C:red}Maldito{}"}},
+            tag_kranlaxs_wet_tag = {name = "Etiqueta Mojada", text = {"El próximo Comodín", "de la tienda es {C:blue}Acuático{}"}},
+            tag_kranlaxs_zen_tag = {name = "Etiqueta Zen", text = {"Reduce la {C:attention}apuesta", "{C:attention}base{} actual en {C:blue}-1{}"}},
+            tag_kranlaxs_cosmic_tag = {name = "Etiqueta Cósmica", text = {"Añade la edición {C:dark_edition}Cósmica{}", "a una carta aleatoria", "de tu {C:attention}mazo{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Etiqueta Amarillenta", text = {"Añade la edición {C:attention}Sepia{}", "a una carta aleatoria", "de tu {C:attention}mazo{}"}},
+            tag_kranlaxs_boring_tag = {name = "Etiqueta Aburrida", text = {"El próximo Comodín", "de la tienda es {C:dark_edition}Monocromático{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Etiqueta Demoníaca", text = {"El próximo Comodín", "de la tienda está {C:red}Maldito{}"}},
+            tag_kranlaxs_wet_tag = {name = "Etiqueta Mojada", text = {"Añade la edición {C:blue}Acuática{}", "a una carta aleatoria", "de tu {C:attention}mazo{}"}},
+            tag_kranlaxs_zen_tag = {name = "Etiqueta Zen", text = {"Reduce la {C:attention}apuesta", "{C:attention}base{} actual en {C:blue}-1{}"}}
+        },
+
+        Edition = {
+            e_kranlaxs_cosmic = {name = "Cósmica", text = {"Sube de nivel la {C:attention}mano de{}", "{C:attention}póker seleccionada{}", "al ser {C:red}descartada{}"}},
+            e_kranlaxs_sepia = {name = "Sepia", text = {"{C:green}#1# en #2#{} prob. de", "crear una {C:attention}Etiqueta{}", "si está en mano al puntuar"}},
+            e_kranlaxs_cursed = {name = "Maldita", text = {"{C:attention}Equilibra{} las Fichas y", "el Multiplicador al puntuar.", "{C:green}#1# en #2#{} de prob. de", "{C:red}destruirse{} después."}},
+            e_kranlaxs_monochrome = {name = "Monocromática", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "Se {C:red}destruye{} al puntuar"}},
+            e_kranlaxs_underwater = {name = "Acuática", text = {"{X:chips,C:white} X#1# {} Fichas"}}
         },
 
         Other = {
@@ -224,22 +263,10 @@ return {
             kranlaxs_deviled_sticker = {name = "Sticker diabólico", text = {"Usaste este comodín", "para ganar la dificultad", "{C:attention}Pozo diabólico{}"}},
             kranlaxs_glass_sticker = {name = "Sticker de cristal", text = {"Usaste este comodín", "para ganar la dificultad", "{C:attention}Pozo de cristal{}"}},
             p_kranlaxs_invtarot_store_5_2 = {name = "Mega Tarot Inverso Guardado", text = {"Elige {C:attention}2{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}}
-        },
-
-        Booster = {
-            p_kranlaxs_uno_store_3 = {name = "Paquete UNO", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:blue}UNO{}"}},
-            p_kranlaxs_uno_store_5 = {name = "Paquete UNO Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:blue}UNO{}"}},
-            p_kranlaxs_invtarot_instant_3_1 = {name = "Paquete Tarot Inverso", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:purple}Tarot Inverso{}"}},
-            p_kranlaxs_invtarot_instant_5_1 = {name = "Paquete Tarot Inverso Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
-            p_kranlaxs_invtarot_instant_5_2 = {name = "Mega Paquete Tarot Inverso", text = {"Elige {C:attention}2{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
-            p_kranlaxs_invtarot_store_3_1 = {name = "Tarot Inverso Guardado", text = {"Elige {C:attention}1{} de hasta", "{C:attention}3{} cartas {C:purple}Tarot Inverso{}"}},
-            p_kranlaxs_invtarot_store_5_1 = {name = "Tarot Inverso Guardado Jumbo", text = {"Elige {C:attention}1{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}},
-            p_kranlaxs_invtarot_store_5_2 = {name = "Mega Tarot Inverso Guardado", text = {"Elige {C:attention}2{} de hasta", "{C:attention}5{} cartas {C:purple}Tarot Inverso{}"}}
         }
     },
     
     misc = {
-
         labels = {
             kranlaxs_magenta_sticker = "Sticker magenta",
             kranlaxs_brown_sticker = "Sticker marrón",
@@ -262,10 +289,13 @@ return {
             p_kranlaxs_invtarot_store_5_2 = "Mega Tarot Inverso Guardado",
             kranlaxs_deviled_sticker = "Sticker diabólico",
             kranlaxs_glass_sticker = "Sticker de cristal",
-            kranlaxs_wave = "Acuática"
+            kranlaxs_wave = "Acuática",
+            e_kranlaxs_cosmic = "Cósmica",
+            e_kranlaxs_sepia = "Sepia",
+            e_kranlaxs_cursed = "Maldita",
+            e_kranlaxs_monochrome = "Monocromática",
+            e_kranlaxs_underwater = "Acuática"
         },
-
-
 
         v_text = {
             ch_c_kran_fijado_1 = {"Todos los comodines tienen el sticker {C:attention}Fijado{}"},

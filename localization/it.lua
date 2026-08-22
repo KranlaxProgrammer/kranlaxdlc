@@ -188,11 +188,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "Mega Tag Inverso Salvato", text = {"Concede un {C:attention}Mega Tarocco Inverso Salvato{}", "gratis all'istante"}},
             tag_kranlaxs_quartz_tag = {name = "Tag di Quarzo", text = {"Crea un {C:attention}Quarzo{} casuale", "{C:inactive}(Devi avere spazio){}"}},
             tag_kranlaxs_sticker_remover = {name = "Tag Purgante", text = {"Rimuove un adesivo {C:attention}Eterno{},", "{C:attention}Deperibile{} o a {C:attention}Noleggio{} da", "un {C:attention}Jolly{} casuale", "{C:inactive}(Dà {X:money,C:white} $5 {C:inactive} se non ci sono adesivi){}"}},
-            tag_kranlaxs_legendary = {name = "Tag Leggendario", text = {"Il negozio ha un", "{C:legendary}Jolly Leggendario{} gratis"}}
+            tag_kranlaxs_legendary = {name = "Tag Leggendario", text = {"Il negozio ha un", "{C:legendary}Jolly Leggendario{} gratis"}},
+            tag_kranlaxs_cosmic_tag = {name = "Tag Cosmico", text = {"Aggiunge l'edizione {C:dark_edition}Cosmica{}", "a una carta casuale", "nel tuo {C:attention}mazzo{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Tag Giallastro", text = {"Aggiunge l'edizione {C:attention}Seppia{}", "a una carta casuale", "nel tuo {C:attention}mazzo{}"}},
+            tag_kranlaxs_boring_tag = {name = "Tag Noioso", text = {"Il prossimo Jolly nel negozio", "è {C:dark_edition}Monocromatico{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Tag Demoniaco", text = {"Il prossimo Jolly nel negozio", "è {C:red}Maledetto{}"}},
+            tag_kranlaxs_wet_tag = {name = "Tag Bagnato", text = {"Aggiunge l'edizione {C:blue}Sottomarina{}", "a una carta casuale", "nel tuo {C:attention}mazzo{}"}},
+            tag_kranlaxs_zen_tag = {name = "Tag Zen", text = {"Riduci l'{C:attention}Ante base{}", "attuale di {C:blue}-1{}"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "Acquatico", text = {"{X:chips,C:white} X#1# {} Fiches"}}
+            e_kranlaxs_cosmic = {name = "Cosmica", text = {"Aumenta il livello della {C:attention}mano di poker{}", "selezionata quando viene {C:red}scartata{}"}},
+            e_kranlaxs_sepia = {name = "Seppia", text = {"{C:green}#1# probabilità su #2#{} di", "creare un {C:attention}Tag{} se tenuta", "in mano durante il punteggio"}},
+            e_kranlaxs_cursed = {name = "Maledetta", text = {"{C:attention}Bilancia{} Fiches e Pallottoliere", "durante il punteggio.", "{C:green}#1# probabilità su #2#{} di", "essere {C:red}distrutta{} in seguito."}},
+            e_kranlaxs_monochrome = {name = "Monocromatica", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "Viene {C:red}distrutta{} durante il punteggio"}},
+            e_kranlaxs_underwater = {name = "Sottomarina", text = {"{X:chips,C:white} X#1# {} Fiches"}}
         },
 
         Other = {
@@ -253,7 +263,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "Tarocco Inverso Salvato",
             p_kranlaxs_invtarot_store_5_1 = "Tarocco Inverso Salvato Jumbo",
             p_kranlaxs_invtarot_store_5_2 = "Mega Tarocco Inverso Salvato",
-            kranlaxs_wave = "Acquatico"
+            kranlaxs_wave = "Acquatico",
+            e_kranlaxs_cosmic = "Cosmica",
+            e_kranlaxs_sepia = "Seppia",
+            e_kranlaxs_cursed = "Maledetta",
+            e_kranlaxs_monochrome = "Monocromatica",
+            e_kranlaxs_underwater = "Sottomarina"
         },
 
         v_text = {

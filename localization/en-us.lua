@@ -200,11 +200,21 @@ return {
             tag_kranlaxs_mega_invtarot_store = {name = "Stored Mega Inverse Tag", text = {"Grants a free {C:attention}Stored Mega Inverse Tarot{}", "instantly"}},
             tag_kranlaxs_quartz_tag = {name = "Quartz Tag", text = {"Creates a random {C:attention}Quartz{}", "{C:inactive}(Must have room){}"}},
             tag_kranlaxs_sticker_remover = {name = "Cleanser Tag", text = {"Removes an {C:attention}Eternal{},", "{C:attention}Perishable{} or {C:attention}Rental{} sticker from", "a random {C:attention}Joker{}", "{C:inactive}(Gives {X:money,C:white} $5 {C:inactive} if no stickers){}"}},
-            tag_kranlaxs_legendary = {name = "Legendary Tag", text = {"Shop has a free", "{C:legendary}Legendary Joker{}"}}
+            tag_kranlaxs_legendary = {name = "Legendary Tag", text = {"Shop has a free", "{C:legendary}Legendary Joker{}"}},
+            tag_kranlaxs_cosmic_tag = {name = "Cosmic Tag", text = {"Adds {C:dark_edition}Cosmic{} edition", "to a random card", "in your {C:attention}deck{}"}},
+            tag_kranlaxs_yellowish_tag = {name = "Yellowish Tag", text = {"Adds {C:attention}Sepia{} edition", "to a random card", "in your {C:attention}deck{}"}},
+            tag_kranlaxs_boring_tag = {name = "Boring Tag", text = {"Next Joker in the shop", "is {C:dark_edition}Monochrome{}"}},
+            tag_kranlaxs_demonic_tag = {name = "Demonic Tag", text = {"Next Joker in the shop", "is {C:red}Cursed{}"}},
+            tag_kranlaxs_wet_tag = {name = "Wet Tag", text = {"Adds {C:blue}Underwater{} edition", "to a random card", "in your {C:attention}deck{}"}},
+            tag_kranlaxs_zen_tag = {name = "Zen Tag", text = {"Reduces current", "{C:attention}base Ante{} by {C:blue}-1{}"}}
         },
 
         Edition = {
-            e_kranlaxs_wave = {name = "Aquatic", text = {"{X:chips,C:white} X#1# {} Chips"}}
+            e_kranlaxs_cosmic = {name = "Cosmic", text = {"Levels up the {C:attention}selected poker hand{}", "when {C:red}discarded{}"}},
+            e_kranlaxs_sepia = {name = "Sepia", text = {"{C:green}#1# in #2#{} chance to", "create a {C:attention}Tag{}", "if held in hand when scoring"}},
+            e_kranlaxs_cursed = {name = "Cursed", text = {"{C:attention}Balances{} Chips and Mult", "when scoring.", "{C:green}#1# in #2#{} chance to", "{C:red}destroy{} itself afterwards."}},
+            e_kranlaxs_monochrome = {name = "Monochrome", text = {"{X:dark_edition,C:white} ^#1# {} Mult", "{C:red}Destroys{} itself when scoring"}},
+            e_kranlaxs_underwater = {name = "Underwater", text = {"{X:chips,C:white} X#1# {} Chips"}}
         },
 
         Other = {
@@ -243,19 +253,6 @@ return {
     },
     
     misc = {
-        dictionary = {
-            ["k_uno pack_pack"] = "UNO Pack",
-            ["k_jumbo uno pack_pack"] = "Jumbo UNO Pack",
-            ["k_inverse tarot pack_pack"] = "Inverse Tarot Pack",
-            ["k_jumbo inverse tarot pack_pack"] = "Jumbo Inverse Tarot Pack",
-            ["k_mega inverse tarot pack_pack"] = "Mega Inverse Tarot Pack",
-            ["k_stored inverse tarot_pack"] = "Stored Inverse Tarot",
-            ["k_stored jumbo inverse tarot_pack"] = "Stored Jumbo Inverse Tarot",
-            ["k_stored mega inverse tarot_pack"] = "Stored Mega Inverse Tarot",
-            
-            k_uno_pack = "UNO Pack",
-            k_inversetarot_pack = "Inverse Tarot Pack"
-        },
 
         labels = {
             kranlaxs_magenta_sticker = "Magenta Sticker",
@@ -279,7 +276,12 @@ return {
             p_kranlaxs_invtarot_store_3_1 = "Stored Inverse Tarot",
             p_kranlaxs_invtarot_store_5_1 = "Stored Jumbo Inverse Tarot",
             p_kranlaxs_invtarot_store_5_2 = "Stored Mega Inverse Tarot",
-            kranlaxs_wave = "Aquatic"
+            kranlaxs_wave = "Aquatic",
+            e_kranlaxs_cosmic = "Cosmic",
+            e_kranlaxs_sepia = "Sepia",
+            e_kranlaxs_cursed = "Cursed",
+            e_kranlaxs_monochrome = "Monochrome",
+            e_kranlaxs_underwater = "Underwater"
         },
 
         v_text = {
