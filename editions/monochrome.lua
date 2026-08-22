@@ -1,42 +1,45 @@
-
 SMODS.Edition {
     key = 'monochrome',
-    shader = 'foil',
-    prefix_config = {
-        -- This allows using the vanilla shader
-        -- Not needed when using your own
-        shader = false
-    },
+    shader = 'monochrome',
     config = {
         extra = {
             emult0 = 3
         }
     },
     in_shop = false,
-    apply_to_float = false,
-    disable_shadow = false,
-    disable_base_shader = false,
-    loc_txt = {
-        name = 'Monochrome',
-        label = 'Monochrome',
-        text = {
-            [1] = 'A {C:blue}custom{} edition with {C:red}unique{} effects.'
-        }
-    },
-    unlocked = true,
-    discovered = true,
-    no_collection = false,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {self.config.extra.emult0}}
+    end,
     get_weight = function(self)
         return G.GAME.edition_rate * self.weight
     end,
     
     calculate = function(self, card, context)
-        if (context.pre_joker or (context.main_scoring and context.cardarea == G.play)) then
-            card.should_destroy = false
-            card.should_destroy = true
+        -- 1. FASE DE PUNTUACIÓN (Ya sea en Carta o en Joker)
+        if (context.edition and context.cardarea == G.jokers and card.config.trigger) or (context.main_scoring and context.cardarea == G.play) then
             return {
-                e_mult = 3
+                e_mult = self.config.extra.emult0
             }
+        end
+        
+        -- Seguro anti-doble activación (Estructura de Cryptid)
+        if context.joker_main then card.config.trigger = true end
+        
+        -- 2. FASE DE LIMPIEZA (Destrucción)
+        if context.after then
+            card.config.trigger = nil
+            if not context.blueprint then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        card.getting_sliced = true
+                        play_sound('tarot1')
+                        card:start_dissolve()
+                        return true
+                    end
+                }))
+            end
         end
     end
 }

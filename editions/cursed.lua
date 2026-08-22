@@ -1,46 +1,58 @@
-
 SMODS.Edition {
     key = 'cursed',
-    shader = 'foil',
-    prefix_config = {
-        -- This allows using the vanilla shader
-        -- Not needed when using your own
-        shader = false
-    },
+    shader = 'cursed',
     config = {
         extra = {
             odds = 4
         }
     },
     in_shop = false,
-    apply_to_float = false,
-    disable_shadow = false,
-    disable_base_shader = false,
-    loc_txt = {
-        name = 'Cursed',
-        label = 'Cursed',
-        text = {
-            [1] = 'A {C:blue}custom{} edition with {C:red}unique{} effects.'
-        }
-    },
-    unlocked = true,
-    discovered = true,
-    no_collection = false,
     loc_vars = function(self, info_queue, card)
-        return {vars = {}}
+        return {vars = {G.GAME.probabilities.normal or 1, self.config.extra.odds}}
     end,
     get_weight = function(self)
         return G.GAME.edition_rate * self.weight
     end,
     
     calculate = function(self, card, context)
-        if (context.pre_joker or (context.main_scoring and context.cardarea == G.play)) then
-            card.should_destroy = false
-            SMODS.calculate_effect({balance = true}, card)
-            if SMODS.pseudorandom_probability(card, 'group_0_06b9afdf', 1, card.ability.extra.odds, 'j_mycustom_cursed', false) then
-                context.other_card.should_destroy = true
-                card.should_destroy = true
-                
+        -- 1. BALANCEO INSTANTÁNEO
+        if (context.edition and context.cardarea == G.jokers and card.config.trigger) or (context.main_scoring and context.cardarea == G.play) then
+            local tot = hand_chips + mult
+            
+            -- Compatible con números gigantes de Talisman
+            if to_big then
+                hand_chips = tot / to_big(2)
+                mult = tot / to_big(2)
+            else
+                hand_chips = math.floor(tot / 2)
+                mult = math.floor(tot / 2)
+            end
+            
+            update_hand_text({delay = 0}, {mult = mult, chips = hand_chips})
+            
+            return {
+                message = "¡Equilibrado!",
+                colour = G.C.DARK_EDITION
+            }
+        end
+        
+        -- Seguro anti-doble activación
+        if context.joker_main then card.config.trigger = true end
+        
+        -- 2. DADO DE DESTRUCCIÓN POST-MANO
+        if context.after then
+            card.config.trigger = nil
+            if not context.blueprint and pseudorandom('cursed_destruct') < G.GAME.probabilities.normal / self.config.extra.odds then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        card.getting_sliced = true
+                        play_sound('tarot1')
+                        card:start_dissolve()
+                        return true
+                    end
+                }))
             end
         end
     end
