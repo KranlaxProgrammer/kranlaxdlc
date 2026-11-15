@@ -1,0 +1,21 @@
+{
+  "id": "kranlaxs",
+  "name": "Kranlax's DLC",
+  "author": [
+    "Kranlax Karasu",
+    "Cyanuro Cyao",
+    "Josepo",
+    "OnlyAPlayerMoreYT"
+  ],
+  "description": "WARNINGS:\n1. Suggestive sprites may trigger trypophobia when destroyed/sold due to shader scaling on high-res textures.\n2. Jokers unlocked via challenges require a game restart to appear in the collection.\n3. Send feedback and bug reports to: furrogenerico777@gmail.com",
+  "prefix": "kranlaxs",
+  "main_file": "main.lua",
+  "version": "1.0",
+  "priority": 0,
+  "badge_colour": "666665",
+  "badge_text_colour": "FFFFFF",
+  "dependencies": [
+    "Steamodded (>=1.0.0~BETA-0827c)",
+    "Talisman"
+  ]
+}
