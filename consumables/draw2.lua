@@ -1,0 +1,51 @@
+SMODS.Consumable {
+    key = 'draw2',
+    set = 'UNOCards',
+    pos = { x = 1, y = 0 },
+    config = { extra = { hands0 = 1 } },
+    cost = 3,
+    unlocked = true,
+    discovered = false,
+    hidden = false,
+    can_repeat_soul = false,
+    atlas = 'CustomConsumables',
+
+    in_pool = function(self, args)
+        if SMODS.showman and SMODS.showman('c_kranlaxs_' .. self.key) then return true end
+        if not G.consumeables or not G.consumeables.cards then return true end
+        for _, v in ipairs(G.consumeables.cards) do
+            if v.config.center.key == 'c_kranlaxs_' .. self.key then return false end
+        end
+        return true
+    end,
+    
+    use = function(self, card, area, copier)
+        local used_card = copier or card
+        if G.GAME.blind.in_blind then
+            if G.hand and #G.hand.cards > 0 then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after', delay = 0.4,
+                    func = function()
+                        card_eval_status_text(used_card, 'extra', nil, nil, nil, {message = "+2 Cards Drawn", colour = G.C.BLUE})
+                        SMODS.draw_cards(2)
+                        return true
+                    end
+                }))
+            end
+            
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after', delay = 0.4,
+                func = function()
+                    card_eval_status_text(used_card, 'extra', nil, nil, nil, {message = "-1 Hand", colour = G.C.RED})
+                    G.GAME.current_round.hands_left = math.max(0, G.GAME.current_round.hands_left - 1)
+                    return true
+                end
+            }))
+        end
+    end,
+    
+    can_use = function(self, card)
+        
+        return G.GAME.blind and G.GAME.blind.in_blind and G.GAME.current_round.hands_left > 1
+    end
+}
